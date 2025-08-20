@@ -1,9 +1,10 @@
 using ResoniteModLoader;
+using Elements.Core;
 
 namespace ResoniteTestMod;
 
 public class LogAutoFlush : ResoniteMod {
-	internal const string VERSION_CONSTANT = "1.0.0";
+	internal const string VERSION_CONSTANT = "1.0.1";
 	public override string Name => "LogAutoFlush";
 	public override string Author => "Delta";
 	public override string Version => VERSION_CONSTANT;
@@ -18,16 +19,14 @@ public class LogAutoFlush : ResoniteMod {
 		Config = GetConfiguration();
 		Config.Save(true);
 
-		Msg($"Current AutoFlush Setting: {FrooxEngineBootstrap.LogStream.AutoFlush}");
-		if (Config.GetValue(AutoFlush)) {
-			FrooxEngineBootstrap.LogStream.AutoFlush = true;
+		if (AutoFlush.Value) {
+			UniLog.FlushEveryMessage = true;
 		}
-
 		AutoFlush.OnChanged += AutoFlush_OnChanged;
 	}
 
 	private void AutoFlush_OnChanged(object? newValue) {
-		FrooxEngineBootstrap.LogStream.AutoFlush = (bool)newValue;
+		UniLog.FlushEveryMessage = (bool)newValue;
 		Msg($"Setting AutoFlush to: {newValue}");
 	}
 }
