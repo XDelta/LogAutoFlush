@@ -1,7 +1,9 @@
 # LogAutoFlush
-A [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader) mod for [Resonite](https://resonite.com/) that allows forcing the LogStream to AutoFlush and Write to file instead of buffering writes. This will causes writes to happen significantly more frequently while enabled but when debugging, seeing the full log line instead of one that is partially cut off is worth the trade off.
+A [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader) mod for [Resonite](https://resonite.com/) that allows enabling `UniLog.FlushEveryMessage` and write to file immmediately instead of buffering writes. This will causes IO writes to happen significantly more frequently while enabled but when debugging, seeing the full log line instead of one that is partially cut off is worth the trade off.
 
-You must manually enable `AutoFlush` for this to function. It is intentionally disabled by default.
+You must manually enable the `AutoFlush` setting for this to function. It is intentionally disabled by default.
+
+Resonite Issue to implement a launch option to enable: https://github.com/Yellow-Dog-Man/Resonite-Issues/issues/6315
 
 ## Installation
 1. Install [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader).
@@ -12,4 +14,4 @@ You must manually enable `AutoFlush` for this to function. It is intentionally d
 
 | Config Option     | Default | Description |
 | ------------------ | ------- | ----------- |
-| `AutoFlush` | `false` | Enable AutoFlushing the logs |
+| `AutoFlush` | `false` | Enable auto flushing the logs |
